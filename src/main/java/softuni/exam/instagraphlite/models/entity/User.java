@@ -6,8 +6,9 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.util.Set;
 
-@Entity(name = "users")
+@Entity(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -24,4 +25,7 @@ public class User extends BaseEntity {
 
     @ManyToOne(optional = false)
     private Picture profilePicture;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
 }
